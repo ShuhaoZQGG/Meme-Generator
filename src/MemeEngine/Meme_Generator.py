@@ -18,7 +18,7 @@ class Meme_Generator:
         else:
             raise ValueError('Width cannot exceed 500')
         
-        draw = ImageDraw.Draw(image)
+        draw = ImageDraw.Draw(img)
         font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=20)
         meme = f'{text}{author}'
         color = list(np.random.choice(range(256), size=3))
