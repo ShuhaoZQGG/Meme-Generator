@@ -1,10 +1,9 @@
 from typing import List
 import pandas
-
 from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 
-class CSVImporter(IngestorInterface):
+class CSVIngestor(IngestorInterface):
     allowed_extensions = ['csv']
 
     @classmethod
