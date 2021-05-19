@@ -2,11 +2,10 @@ from typing import List
 import subprocess
 import os
 import random
-
-from .ingestor_interface import ImportInterface
+from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 
-class PDFIngestor(ImportInterface):
+class PDFIngestor(IngestorInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
