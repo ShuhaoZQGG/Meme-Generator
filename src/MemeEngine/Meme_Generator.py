@@ -5,26 +5,46 @@ import numpy as np
 from numpy.random import f
 
 class Meme_Generator:
-    def __init__(self,output_dir):
+    def __init__(self, output_dir):
+        """Initialize the class state."""
         self.output_dir = output_dir
-        os.makedirs(self.output_dir,exist_ok=True)
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
 
-    def make_meme(self,img_path,text,author,width=500)->str:
-        img = Image.open(img_path)
-        if width <= 500:
-            ratio = width/float(img.size[0])
-            height = int(ratio*float(img.size[1]))
-            img = img.resize((width,height),Image.NEAREST)
-        else:
-            raise ValueError('Width cannot exceed 500')
-        
-        draw = ImageDraw.Draw(image)
-        font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=20)
-        meme = f'{text}{author}'
-        color = list(np.random.choice(range(256), size=3))
-        draw = draw.text((randint(0,len(meme))),meme,font=font,fill=color)
-       
-        out_path = os.path.join(self.output_dir,f'{text}{author}_{randint(0,100000)}.jpg')
-        img.save(out_path)
+    def make_meme(self, img_path, text, author, width=500) -> str:
+        """Make a meme."""
+        # load an image
+        input_image = Image.open(img_path)
+
+        # transform the image parameters
+        transform_width = min(width, 500)
+        transform_ratio = transform_width / float(input_image.size[0])
+        transform_height = int(transform_ratio * float(input_image.size[1]))
+
+        # resize an input image
+        resized_image = input_image.resize(
+            (transform_width, transform_height), Image.NEAREST
+        )
+
+        # add a text to the resized image
+        text_length = len(text) + len(author)
+        text_body = f'{text} {author}'
+        draw_image = ImageDraw.Draw(resized_image)
+        font_image = ImageFont.truetype(
+            './_data/fonts/LilitaOne-Regular.ttf',
+            size=18)
+        draw_image.text(
+            (randint(0, text_length), randint(0, text_length)),
+            text_body,
+            font=font_image,
+            fill='white'
+        )
+
+        # write the image with the text do a disk
+        out_path = os.path.join(self.output_dir,
+                                f'image was created at {time()}.png')
+
+        resized_image.save(out_path)
+
         return out_path
         

@@ -13,7 +13,7 @@ class TextIngestor(IngestorInterface):
         quotes = []
         with open(path, 'r') as infile:
             for line in infile:
-               # line = line.strip('\n')
+                line = line.strip('\n')
                 parse = line.split('-')
                 new_quote =  QuoteModel(parse[0],parse[1])     
                 quotes.append(new_quote)
