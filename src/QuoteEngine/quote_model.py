@@ -7,4 +7,4 @@ class QuoteModel:
         f"{self.body}--{self.author}"
     
     def __repr__(self):
-        f"QuoteModel(quote={self.body!r}--author={self.author!r})"
+        f"QuoteModel(quote={self.body}--author={self.author})"

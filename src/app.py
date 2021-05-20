@@ -18,8 +18,7 @@ def setup():
             "./_data/DogQuotes/DogQuotesTXT.txt",
             "./_data/DogQuotes/DogQuotesDOCX.docx",
             "./_data/DogQuotes/DogQuotesPDF.pdf",
-            "./_data/DogQuotes/DogQuotesCSV.csv",
-        ]
+            "./_data/DogQuotes/DogQuotesCSV.csv"]
     
     images_path = "./_data/photos/dog/"
 
