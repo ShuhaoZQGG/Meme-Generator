@@ -1,7 +1,6 @@
 from typing import List
 from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
-from .InvalidFileExtension import InvalidFileExtension
 
 class TextIngestor(IngestorInterface):
     allowed_extension = ['txt']
