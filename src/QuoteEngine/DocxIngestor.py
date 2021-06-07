@@ -4,7 +4,7 @@ from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 
 class DocxIngestor(IngestorInterface):
-    allowed_extensions = ['docx']
+    allowed_extension = ['docx']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:

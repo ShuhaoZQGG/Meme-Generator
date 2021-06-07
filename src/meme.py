@@ -4,7 +4,9 @@ import argparse
 import MemeEngine
 # @TODO Import your Ingestor and MemeEngine classes
 from QuoteEngine import Ingestor, quote_model
+from QuoteEngine.Ingestor import Ingestor
 from MemeEngine import Meme_Generator
+from MemeEngine.Meme_Generator import Meme_Generator
 
 def generate_meme(path=None, body=None, author=None):
     """ Generate a meme given an path and a quote """
@@ -24,6 +26,7 @@ def generate_meme(path=None, body=None, author=None):
                        './_data/DogQuotes/DogQuotesPDF.pdf',
                        './_data/DogQuotes/DogQuotesCSV.csv']
         quotes = []
+        
         for f in quote_files:
             quotes.extend(Ingestor.parse(f))
 
@@ -33,21 +36,14 @@ def generate_meme(path=None, body=None, author=None):
             raise Exception('Author Required if Body is Used')
         quote = quote_model(body, author)
 
-    meme = MemeEngine('./tmp')
+    meme = Meme_Generator('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
     return path
 
-def make_args():
-    """Make argument parser."""
-
-    parser = argparse.ArgumentParser(description="Generate meme.")
-    parser.add_argument("--body", type=str, help="Quote body.")
-    parser.add_argument("--author", type=str, help="Quote author.")
-    parser.add_argument("--path", type=str, help="Image path.")
-    return parser
-
-
 if __name__ == "__main__":
-    parser = make_args()
+    parser = argparse.ArgumentParser(description='gives a meme')
+    parser.add_argument('--path', type=str, help='path to get images')
+    parser.add_argument('--body', type=str, help='body of text to be in meme')
+    parser.add_argument('--author', type=str, help='author of the text')
     args = parser.parse_args()
-    print(generate_meme(args.path, args.body, args.author))
+    print(generate_meme(args.path, args.body, args.author))s

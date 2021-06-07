@@ -25,12 +25,10 @@ def setup():
     # TODO: Use the Ingestor class to parse all files in the
     # quote_files variable
     quotes = []
-    for f in quote_files:
-        if not os.path.exists(f):
-            print(f"The following quote sample is missing: {f}")
-            continue
-        quotes.extend(Ingestor.parse(f))
-
+   # print(Ingestor.parse(quote_files[3]))
+    for file in quote_files:
+        quotes.extend(Ingestor.parse(file))
+        
     if not quotes:
         raise Exception("No sample quotes found!")
 

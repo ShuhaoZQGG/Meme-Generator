@@ -4,7 +4,7 @@ from .ingestor_interface import IngestorInterface
 from .quote_model import QuoteModel
 
 class CSVIngestor(IngestorInterface):
-    allowed_extensions = ['csv']
+    allowed_extension = ['csv']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
