@@ -7,4 +7,8 @@ class QuoteModel:
         f"{self.body}--{self.author}"
     
     def __repr__(self):
-        f"QuoteModel(quote={self.body}--author={self.author})"
+        """Repr returns the sting when object is called."""
+        if self.body.startswith("\"") and self.body.endswith("\""):
+            return f'{self.body} - {self.author}'
+        else:
+            return f'"{self.body}" - {self.author}'
