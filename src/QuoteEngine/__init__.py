@@ -3,5 +3,5 @@ from .DocxIngestor import DocxIngestor
 from .ingestor_interface import IngestorInterface
 from .PDFIngestor import PDFIngestor
 from .CsvIngestor import CSVIngestor
-from .Ingestor import Ingestor
+from .ingestor import Ingestor
 from .TextIngestor import TextIngestor
