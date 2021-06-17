@@ -4,7 +4,7 @@ import argparse
 import MemeEngine
 # @TODO Import your Ingestor and MemeEngine classes
 from QuoteEngine import Ingestor, quote_model
-from QuoteEngine.Ingestor import Ingestor
+from QuoteEngine.ingestor import Ingestor
 from MemeEngine import Meme_Generator
 from MemeEngine.Meme_Generator import Meme_Generator
 
@@ -46,4 +46,4 @@ if __name__ == "__main__":
     parser.add_argument('--body', type=str, help='body of text to be in meme')
     parser.add_argument('--author', type=str, help='author of the text')
     args = parser.parse_args()
-    print(generate_meme(args.path, args.body, args.author))s
+    print(generate_meme(args.path, args.body, args.author))
